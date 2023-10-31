@@ -1,6 +1,15 @@
 """Simulates a game of mario kart through randomized events and text-based prompts.
 """
+class MarioKart:
+    """
+    A class representing mario kart, that includes a list of players and available characters.
 
+    Attributes: 
+    players(list): A list of players in the game
+    available_characters(list): A list of characters a player can choose from
+    """
+    def __init__ ...
+    
 def mystery_box(player_rank):
 """Determines the type of item that a player will recieve from a mystery box
 
@@ -15,15 +24,13 @@ get the rank of the players and depending on whether they are hit by a special i
 """
 
 def player_position():
-"""
-Determine what plave the player is after using special item.
-
-Returns: Player Position and whether or not they are in top 3.
-"""
+    """ Determine what play the player is after using special item.
+    
+    Returns: Player Position and whether or not they are in top 3.
+    """
 
 def burn_out_probability(player):
-  """
-  Calculates the probability of a player burning out at the start of a race.
+  """Calculates the probability of a player burning out at the start of a race.
 
   Args:
     player: A Player object.
