@@ -20,3 +20,14 @@ Determine what plave the player is after using special item.
 
 Returns: Player Position and whether or not they are in top 3.
 """
+
+def burn_out_probability(player):
+  """
+  Calculates the probability of a player burning out at the start of a race.
+
+  Args:
+    player: A Player object.
+
+  Returns:
+    A float representing the probability of the player burning out.
+  """
