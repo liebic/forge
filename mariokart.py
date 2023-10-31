@@ -38,3 +38,20 @@ def burn_out_probability(player):
   Returns:
     A float representing the probability of the player burning out.
   """
+  
+  def prob_hit_player(player_rank, speed):
+    ''' Determines the probability a player is hit by another player. 
+    Args: 
+    player_rank(int): The pacement of the player in the race.
+    speed (int): speed of player 
+    Returns: the prob of player hitting another player
+    '''
+    
+    
+    def prob_hit_player(player_rank, speed):
+    ''' Determines the probability a player is hit by another player. 
+    Args: 
+    player_rank(int): The pacement of the player in the race.
+    speed (int): speed of player 
+    '''
+    
