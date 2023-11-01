@@ -7,15 +7,17 @@ class MarioKart:
     Attributes: 
     players(list): A list of players in the game
     available_characters(list): A list of characters a player can choose from
-    """
-    def __init__ ...
     
-def mystery_box(player_rank):
-"""Determines the type of item that a player will recieve from a mystery box
-
-Args:
-    player_rank(int): The pacement of the player in the race.
-"""
+    Returns: prints available players
+    """
+    def __init__(self):
+    
+    def mystery_box(player_rank):
+      """Determines the type of item that a player will recieve from a mystery box
+      
+      Args:
+        player_rank(int): The placement of the player in the race.
+    """
 
 
 
@@ -41,17 +43,20 @@ def burn_out_probability(player):
   
   def prob_hit_player(player_rank, speed):
     ''' Determines the probability a player is hit by another player. 
-    Args: 
-    player_rank(int): The pacement of the player in the race.
-    speed (int): speed of player 
-    Returns: the prob of player hitting another player
+    
+      Args: 
+        player_rank(int): The placement of the player in the race.
+        speed (int): speed of player 
+    
+      Returns: the prob of player hitting another player
     '''
     
     
-    def prob_hit_player(player_rank, speed):
-    ''' Determines the probability a player is hit by another player. 
-    Args: 
-    player_rank(int): The pacement of the player in the race.
-    speed (int): speed of player 
-    '''
+  def prob_hit_player(player_rank, speed):
+      ''' Determines the probability a player is hit by another player. 
+      
+      Args: 
+        player_rank(int): The pacement of the player in the race.
+        speed (int): speed of player 
+      '''
     
