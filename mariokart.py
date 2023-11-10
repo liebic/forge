@@ -30,30 +30,30 @@ class Player:
     def adjust_position(self, position_change):
         self.position += position_change
 
-def player_position(player, is_hit_by_special_item, is_using_special_item):
-    """
-    Determine the player's position and whether they are in the top 3 after using a special item or being hit by one.
+    def player_position(player, is_hit_by_special_item, is_using_special_item):
+        """
+        Determine the player's position and whether they are in the top 3 after using a special item or being hit by one.
 
-    Args:
-    player (Player): The Player object for the player.
-    is_hit_by_special_item (bool): True if the player is hit by a special item, False if not.
-    is_using_special_item (bool): True if the player is using a special item, False if not.
+        Args:
+        player (Player): The Player object for the player.
+        is_hit_by_special_item (bool): True if the player is hit by a special item, False if not.
+        is_using_special_item (bool): True if the player is using a special item, False if not.
 
-    Returns:
-    player position indicating whether they are in the top 3 or not.
-    """
-    if is_hit_by_special_item:
-        player.adjust_position(-2)
-    if is_using_special_item:
-        player.adjust_position(3)
+        Returns:
+        player position indicating whether they are in the top 3 or not.
+        """
+        if is_hit_by_special_item:
+            player.adjust_position(-2)
+        if is_using_special_item:
+            player.adjust_position(3)
 
-    players = sorted(players, key=lambda p: p.position, reverse=True)
-    player_index = players.index(player)
-    player_position = player_index + 1 
+        players = sorted(players, key=lambda p: p.position, reverse=True)
+        player_index = players.index(player)
+        player_position = player_index + 1 
 
-    in_top_3 = player_index < 3
+        in_top_3 = player_index < 3
 
-    return print(f"{player.name}: Position {player_position}, In Top 3: {in_top_3}")
+        return print(f"{player.name}: Position {player_position}, In Top 3: {in_top_3}")
 
 
 
