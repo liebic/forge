@@ -126,6 +126,16 @@ def burn_out_probability(player):
   Returns:
     A float representing the probability of the player burning out.
   """
+  base_probability = 0.2 
+  speed_factor = player.speed / 10.0  # speed is on a scale of 0 to 10
+
+  # calculates burn-out probability by base and player speed
+  burn_out_probability = base_probability * speed_factor
+
+  # keeps probability as a float between 0 and 1
+  burn_out_probability = max(0.0, min(1.0, burn_out_probability))
+
+  return burn_out_probability
   
 def prob_hit_player(player_rank, speed):
     ''' Determines the probability a player is hit by another player. 
