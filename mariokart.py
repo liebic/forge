@@ -22,15 +22,41 @@ class MarioKart:
 
 
 
-"""
-get the rank of the players and depending on whether they are hit by a special item or use a special item their rank will be adjusted.
-"""
+class Player:
+    def __init__(self, name):
+        self.name = name
+        self.position = 0
 
-def player_position():
-    """ Determine what play the player is after using special item.
-    
-    Returns: Player Position and whether or not they are in top 3.
+    def adjust_position(self, position_change):
+        self.position += position_change
+
+def player_position(player, is_hit_by_special_item, is_using_special_item):
     """
+    Determine the player's position and whether they are in the top 3 after using a special item or being hit by one.
+
+    Args:
+    player (Player): The Player object for the player.
+    is_hit_by_special_item (bool): True if the player is hit by a special item, False if not.
+    is_using_special_item (bool): True if the player is using a special item, False if not.
+
+    Returns:
+    player position indicating whether they are in the top 3 or not.
+    """
+    if is_hit_by_special_item:
+        player.adjust_position(-2)
+    if is_using_special_item:
+        player.adjust_position(3)
+
+    players = sorted(players, key=lambda p: p.position, reverse=True)
+    player_index = players.index(player)
+    player_position = player_index + 1 
+
+    in_top_3 = player_index < 3
+
+    return print(f"{player.name}: Position {player_position}, In Top 3: {in_top_3}")
+
+
+
 
 def burn_out_probability(player):
   """Calculates the probability of a player burning out at the start of a race.
