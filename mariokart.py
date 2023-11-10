@@ -1,7 +1,7 @@
 """Simulates a game of mario kart through randomized events and text-based prompts.
 """
 import random
-
+import re
 class MarioKart:
     """
     A class representing mario kart, that includes a list of players and 
@@ -74,6 +74,22 @@ class MarioKart:
       Args:
         player_rank(int): The placement of the player in the race.
     """
+    def mystery_box(player_rank):
+      with open("items.txt", 'r') as file:
+        for item in file:
+          if re.match(r'[A-Za-z]+(-?)[A-Za-z]+', item):
+            each_item = item.split(" ")
+        if player_rank == 1:
+            rand_item = random.choice(each_item[0:4])
+        elif player_rank == 2:
+            rand_item = random.choice(each_item[0:7])
+        elif player_rank == 3:
+            rand_item = random.choice(each_item[0:11])
+        elif player_rank == 4:
+          rand_item = random.choice(each_item[0:14])
+        return print(f'Player in {player_rank} place received: {rand_item}')
+
+
 
 
 
