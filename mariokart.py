@@ -87,6 +87,24 @@ class MarioKart:
         elif player_rank == 4:
           rand_item = random.choice(each_item[0:14])
         return print(f'Player in {player_rank} place received: {rand_item}')
+      def prob_hit_player(num_players, player_rank, speed):
+        ''' Determines the probability a player is hit by another player. 
+        Args: 
+        num_players(int): number of players playing 
+        player_rank(int): The placement of the player in the race.
+        speed (int): speed of player. This will be a number between 1 and 100.  
+        Returns: an f string that contains the prob of player hitting another player'''
+        if speed > 100:
+            return "Choose a speed between 0 and 100 mph."
+        #create rank_factor. This depicts that the probability of hitting another player will likey change as player rank changes.
+        rank_factor= player_rank/num_players
+        #create speed_factor. This depicts that the probability of hitting another player will change  as a player's speed changes 
+        speed_factor = speed/100
+        probability_hit_player=(rank_factor+speed_factor)/2
+        #ensure probability is between 0 and 1 
+        probability_hit_player=max(0, min(1,probability_hit_player))
+        probability_hit_player=round(probability_hit_player,2)
+        return f"The probability of hitting another player is {probability_hit_player}."
 
 class Player:
     def __init__(self, name):
@@ -121,15 +139,6 @@ class Player:
 
         return print(f"{player.name}: Position {player_position}, In Top 3: {in_top_3}")
 
-
-
-
-def player_position():
-    """ Determine what play the player is after using special item.
-    
-    Returns: Player Position and whether or not they are in top 3.
-    """
-
 def burn_out_probability(player):
   """Calculates the probability of a player burning out at the start of a race.
 
@@ -149,23 +158,8 @@ def burn_out_probability(player):
   burn_out_probability = max(0.0, min(1.0, burn_out_probability))
 
   return burn_out_probability
+
   
-def prob_hit_player(player_rank, speed):
-    ''' Determines the probability a player is hit by another player. 
+  
     
-      Args: 
-        player_rank(int): The placement of the player in the race.
-        speed (int): speed of player 
-    
-      Returns: the prob of player hitting another player
-    '''
-    
-    
-def prob_hit_player(player_rank, speed):
-      ''' Determines the probability a player is hit by another player. 
-      
-      Args: 
-        player_rank(int): The pacement of the player in the race.
-        speed (int): speed of player 
-      '''
     
