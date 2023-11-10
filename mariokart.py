@@ -74,7 +74,6 @@ class MarioKart:
       Args:
         player_rank(int): The placement of the player in the race.
     """
-    def mystery_box(player_rank):
       with open("items.txt", 'r') as file:
         for item in file:
           if re.match(r'[A-Za-z]+(-?)[A-Za-z]+', item):
@@ -88,10 +87,6 @@ class MarioKart:
         elif player_rank == 4:
           rand_item = random.choice(each_item[0:14])
         return print(f'Player in {player_rank} place received: {rand_item}')
-
-
-
-
 
 class Player:
     def __init__(self, name):
