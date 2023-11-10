@@ -1,5 +1,7 @@
 """Simulates a game of mario kart through randomized events and text-based prompts.
 """
+import random
+
 class MarioKart:
     """
     A class representing mario kart, that includes a list of players and 
@@ -126,7 +128,7 @@ def burn_out_probability(player):
   Returns:
     A float representing the probability of the player burning out.
   """
-  base_probability = 0.2 
+  base_probability = random.random() # base probability selected randomly
   speed_factor = player.speed / 10.0  # speed is on a scale of 0 to 10
 
   # calculates burn-out probability by base and player speed
