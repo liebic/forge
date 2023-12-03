@@ -13,11 +13,14 @@ class MarioKart:
     
     Returns: prints available players
     """
-    def __init__(self):
+    def __init__(self, players_info=[]): 
       """Initialize a MarioKart instance.
       """
       self.players = [] #initializing an empty list of players names
       self.available_characters = ["Mario", "Luigi", "Princess Peach", "Bowser"]
+      
+      for player, character in players_info:
+        self.choosing_character(player, character)
       
     def set_players(self, players_names):
       """Set the list of players who are participating in the MarioKart game.
@@ -58,6 +61,8 @@ class MarioKart:
       print("Available characters are: ")
       for char in self.available_characters:
         print(char)
+        
+      player = input("")
       
       if character in self.available_characters:
         self.available_characters.remove(character)
