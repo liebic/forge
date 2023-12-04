@@ -164,7 +164,5 @@ def burn_out_probability(player):
 
   return burn_out_probability
 
-  
-  
-    
-    
+if __name__ == "__main__":
+  mario_kart_game = MarioKart()
