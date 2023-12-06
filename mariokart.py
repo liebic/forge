@@ -83,6 +83,7 @@ class Player:
         """
         with open("items.txt", 'r') as file:
             items = [item.strip() for item in file.read().split(",")]
+            max_items = 0
 
             if player_rank == 1:
                 max_items = min(4, len(items))
@@ -105,7 +106,7 @@ class MarioKart:
         Initialize a MarioKart instance.
         """
         self.players = []
-        self.available_characters = ["Mario", "Luigi", "Princess Peach", "Bowser", "Daisy", "Shy Guy", "Toad", "Wario", "Link", "Donkey Kong", "Waluigi", "King Boo"]
+        self.available_characters = ["Mario", "Luigi", "Princess Peach", "Bowser", "Daisy", "Shy Guy", "Toad", "Wario", "Link", "Donkey Kong", "Waluigi", "King Boo", "Yoshi", "Birdo", "Lakitu"]
 
     def set_players(self, players_names):
         """
@@ -163,9 +164,7 @@ class MarioKart:
 
         self.players.sort(key=lambda player: player.position)
 
-        print("\nRound Winner:")
         round_winner = self.players[0]
-        print(round_winner)
         round_winner.wins += 1
 
     def display_overall_winner(self):
@@ -185,7 +184,7 @@ class MarioKart:
             self.players.sort(key=lambda player: player.wins, reverse=True)
 
         print("\nOverall Winner:")
-        print(f"{self.players[0].name} ({self.players[0].character}) with {self.players[0].wins} wins!")
+        print(f"{self.players[0].name} ({self.players[0].character})!")
 
 
 if __name__ == "__main__":
