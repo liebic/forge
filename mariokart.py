@@ -70,34 +70,22 @@ class Player:
 
     def __str__(self):
         return f"{self.name} ({self.character}): Position {self.position} - Wins {self.wins}"
-
+    
     def mystery_box(self, player_rank):
-        """
-        Simulate the player receiving an item from the mystery box.
-
-        Parameters:
-        - player_rank (int): The rank of the player.
-
-        Returns:
-        - str: The item received from the mystery box.
-        """
         with open("items.txt", 'r') as file:
-            items = [item.strip() for item in file.read().split(",")]
-            max_items = 0
-
+            for item in file:
+                if re.match(r'[A-Za-z]+(-?)[A-Za-z]+', item):
+                    each_item = item.split(" ")
             if player_rank == 1:
-                max_items = min(4, len(items))
+                rand_item = random.choice(each_item[0:4])
             elif player_rank == 2:
-                max_items = min(7, len(items))
+                rand_item = random.choice(each_item[0:7])
             elif player_rank == 3:
-                max_items = min(11, len(items))
+                rand_item = random.choice(each_item[0:11])
             elif player_rank == 4:
-                max_items = min(14, len(items))
+                rand_item = random.choice(each_item[0:14])
 
-            player_item = random.choice(items[:max_items])
-
-            print(f'{self.name} in {self.position} place received: {player_item}')
-            return player_item
+            return print(f'Player in {player_rank} place received: {rand_item}')
 
 
 class MarioKart:
