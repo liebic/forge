@@ -95,6 +95,7 @@ class MarioKart:
         """
         self.players = []
         self.available_characters = ["Mario", "Luigi", "Princess Peach", "Bowser", "Daisy", "Shy Guy", "Toad", "Wario", "Link", "Donkey Kong", "Waluigi", "King Boo", "Yoshi", "Birdo", "Lakitu"]
+        self.available_vehicles= ["Bike","Sprinter","Wild Wiggler","Kart","Mach Bike","Biddybuggy","Flame Runner","Spear"]
 
     def set_players(self, players_names):
         """
@@ -120,6 +121,18 @@ class MarioKart:
         print("\nAvailable characters are: ")
         for char in self.available_characters:
             print(char)
+    def choosing_vehicle(self, player):
+        print("Available vehicles are: ", ", ".join(self.available_vehicles))
+        while True:
+            chosen_vehicle = input(f"{player.name}, choose a vehicle: ").capitalize()
+        
+            if any(vehicle.lower() == chosen_vehicle.lower() for vehicle in self.available_vehicles):
+                self.available_vehicles = [vehicle for vehicle in self.available_vehicles if vehicle.lower() != chosen_vehicle.lower()]
+                print(f"{player.name} has chosen {chosen_vehicle}!")
+                player.vehicle = chosen_vehicle
+                break
+            else:
+                print(f"Sorry, {chosen_vehicle} has already been chosen for this round. Please choose another.")
 
         while True:
             character = input(f"{player.name}, choose a character: ").capitalize()
@@ -183,6 +196,7 @@ if __name__ == "__main__":
 
         for player in mario_kart_game.players:
             mario_kart_game.choosing_character(player)
+            mario_kart_game.choosing_vehicle(player)
 
         mario_kart_game.run_round()
 
