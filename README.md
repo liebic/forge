@@ -13,6 +13,7 @@ How go use the program:
 | choosing_character  | Liene Bicevskis  | f-strings containing expressions |
 | mystery_box  | Zachary Chenoweth  | regular expression  |
 | mystery_box | Zachary Chenoweth  | `with` statement  |
+| other_items | Zachary Chenoweth | None |
 | __str__  | Yann Mbianga  | magic method  |
 | Content Cell  | Yann Mbianga  | Content Cell  |
 | Content Cell | Rebekah Warner  | content cell  |
