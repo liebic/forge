@@ -1,5 +1,7 @@
 import random
 import re
+import seaborn as sns
+import matplotlib.pyplot as plt
 
 class Player:
     def __init__(self, name, position):
@@ -70,22 +72,34 @@ class Player:
 
     def __str__(self):
         return f"{self.name} ({self.character}): Position {self.position} - Wins {self.wins}"
-    
-    def mystery_box(self, player_rank):
-        with open("items.txt", 'r') as file:
-            for item in file:
-                if re.match(r'[A-Za-z]+(-?)[A-Za-z]+', item):
-                    each_item = item.split(" ")
-            if player_rank == 1:
-                rand_item = random.choice(each_item[0:4])
-            elif player_rank == 2:
-                rand_item = random.choice(each_item[0:7])
-            elif player_rank == 3:
-                rand_item = random.choice(each_item[0:11])
-            elif player_rank == 4:
-                rand_item = random.choice(each_item[0:14])
 
-            return print(f'Player in {player_rank} place received: {rand_item}')
+    def mystery_box(self, player_rank):
+        """
+        Simulate the player receiving an item from the mystery box.
+
+        Parameters:
+        - player_rank (int): The rank of the player.
+
+        Returns:
+        - str: The item received from the mystery box.
+        """
+        with open("items.txt", 'r') as file:
+            items = [item.strip() for item in file.read().split(",")]
+            max_items = 0
+
+            if player_rank == 1:
+                max_items = min(4, len(items))
+            elif player_rank == 2:
+                max_items = min(7, len(items))
+            elif player_rank == 3:
+                max_items = min(11, len(items))
+            elif player_rank == 4:
+                max_items = min(14, len(items))
+
+            player_item = random.choice(items[:max_items])
+
+            print(f'{self.name} in {self.position} place received: {player_item}')
+            return player_item
 
 
 class MarioKart:
@@ -184,8 +198,28 @@ class MarioKart:
 
             self.players.sort(key=lambda player: player.wins, reverse=True)
 
+        self.plot_final_ranking(self.players)
+
         print("\nOverall Winner:")
         print(f"{self.players[0].name} ({self.players[0].character})!")
+
+        
+    def plot_final_ranking(self, players):
+        """
+        Plot the final ranking bar graph for all players.
+
+        Parameters:
+        players (list): List of Player objects.
+        """
+        player_names = [player.name for player in players]
+        player_wins = [player.wins for player in players]
+
+        sns.barplot(x=player_names, y=player_wins)
+        plt.title('Final Ranking')
+        plt.xlabel('Players')
+        plt.ylabel('Wins')
+        plt.show()
+
 
 
 if __name__ == "__main__":
