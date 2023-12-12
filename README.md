@@ -4,8 +4,7 @@ Explanation:
 A demonstration of a version of mario kart in python.
 
 Instructions on how to run the program:
-
-How to use the program:
+Once the program is up and running, the first round each of the four players will be asked to choose a character and a vehcile. Following the round, each member will have to choose another character and vehicle. Once the program has looped three times, a graph will show who won how many times. 
 
 | Method/Function  | Primary Author | Techniques demonstrated |
 | ------------- | ------------- | ------------- |
