@@ -10,7 +10,8 @@ How go use the program:
 | Method/Function  | Primary Author | Techniques demonstrated |
 | ------------- | ------------- | ------------- |
 | set_players  | Liene Bicevskis  | Conditional Expression  |
-| choosing_character  | Liene Bicevskis  | f-strings containing expressions |
+| set_players | Liene Bicevskis  | sequence unpacking |
+| choosing_character | Liene Bicevskis | None|
 | mystery_box  | Zachary Chenoweth  | regular expression  |
 | mystery_box | Zachary Chenoweth  | `with` statement  |
 | adjust_position | Zachary Chenoweth | None |
