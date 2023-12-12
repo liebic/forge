@@ -116,7 +116,13 @@ class MarioKart:
         Set the players for the game.
 
         Parameters:
-        - players_names (list): A list of player names.
+            players_names (list): A list of player names.
+        
+        Side Effects:
+            Prints the available character(s)
+            Takes user input to choose a character, updates player information
+            Prints message regarding successful character selection or prompts
+                player to choose another if selected character is already chosen
         """
         if not isinstance(players_names, list):
             raise TypeError("The players_names parameter must be a list! Try again.")
@@ -130,11 +136,31 @@ class MarioKart:
         Allow a player to choose a character for the game.
 
         Parameters:
-        - player (Player): The player choosing a character.
+            player (str): The player choosing a character.
+            
+        Raises:
+            TypeError: If the players_names parameter is not a list
+            ValueError: If there are more than 4 players
+        
+        Side Effects:
+            Prints a message indicating successful player setup
         """
         print("\nAvailable characters are: ")
         for char in self.available_characters:
             print(char)
+            
+        while True:
+            character = input(f"{player.name}, choose a character: ").capitalize()
+
+            if character.lower() in [char.lower() for char in self.available_characters]:
+                self.available_characters.remove([char for char in self.available_characters if char.lower() == character.lower()][0])
+                print(f"{player.name} has chosen {character}!")
+                player.character = character
+                break
+            else:
+                print(f"Sorry, {character} is not available or has already been chosen. Please choose another.")
+
+        
     def choosing_vehicle(self, player):
         print("Available vehicles are: ", ", ".join(self.available_vehicles))
         while True:
@@ -147,17 +173,6 @@ class MarioKart:
                 break
             else:
                 print(f"Sorry, {chosen_vehicle} has already been chosen for this round. Please choose another.")
-
-        while True:
-            character = input(f"{player.name}, choose a character: ").capitalize()
-
-            if character.lower() in [char.lower() for char in self.available_characters]:
-                self.available_characters.remove([char for char in self.available_characters if char.lower() == character.lower()][0])
-                print(f"{player.name} has chosen {character}!")
-                player.character = character
-                break
-            else:
-                print(f"Sorry, {character} is not available or has already been chosen. Please choose another.")
 
     def run_round(self):
         """
