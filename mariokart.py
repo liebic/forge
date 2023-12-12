@@ -37,16 +37,23 @@ class Player:
 
     def player_position(self, finishing_order, item_effect, is_hit_by_special_item, is_using_special_item):
         """
-        Update player position based on special items.
-
+        This method adjusts the player's position based on special items or actions during the race.
+        If the player is hit by a special item or is using a special item, the position is skillfully
+        modified using the `adjust_position` method with the provided finishing order and item effect.
+        
         Parameters:
         - finishing_order (int): The finishing order of the player.
         - item_effect (str): The effect of the item received.
-        - is_hit_by_special_item (bool): Whether the player is hit by a special item.
-        - is_using_special_item (bool): Whether the player is using a special item.
+        - is_hit_by_special_item (bool): Indicates whether the player is hit by a special item.
+        - is_using_special_item (bool): Indicates whether the player is using a special item.
+
+        Techniques:
+        - Optional Parameters: All parameters are optional with default values.
         """
         if is_hit_by_special_item or is_using_special_item:
             self.adjust_position(finishing_order, item_effect)
+
+
 
     def burn_out_probability(self, item_effect):
         """
@@ -71,8 +78,14 @@ class Player:
         return burn_out_probability
 
     def __str__(self):
-        return f"{self.name} ({self.character}): Position {self.position} - Wins {self.wins}"
+        """
+        Return a formatted string representation of the Player.
 
+        Returns:
+        str: A string containing the player's name, character, current position, and total wins.
+        """
+        return f"{self.name} ({self.character}): Position {self.position} - Wins {self.wins}"
+    
     def mystery_box(self, player_rank):
         """
         Simulate the player receiving an item from the mystery box.
