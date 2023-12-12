@@ -55,6 +55,9 @@ class Player:
 
         Returns:
         - float: The calculated burnout probability.
+        
+        Side Effects:
+        - Returns burn out probability 
         """
         base_probability = random.random()
         speed_factor = self.speed / 10.0
@@ -165,6 +168,19 @@ class MarioKart:
     def display_overall_winner(self):
         """
         Display the overall winner of the Mario Kart game.
+
+        Parameters:
+        - None
+
+        Returns:
+        - None
+
+        Side Effects:
+        - Modifies the order of players in the self.players list.
+        - Prints information about tiebreaker rounds if there is a tie.
+        - Calls the choosing_character method and the run_round method if there is a tie.
+        - Calls the plot_final_ranking method to display the final ranking.
+        - Prints information about the overall winner.
         """
         self.players.sort(key=lambda player: player.wins, reverse=True)
 
@@ -180,6 +196,24 @@ class MarioKart:
 
         print("\nOverall Winner:")
         print(f"{self.players[0].name} ({self.players[0].character})!")
+
+        
+    def plot_final_ranking(self, players):
+        """
+        Plot the final ranking bar graph for all players.
+
+        Parameters:
+        players (list): List of Player objects.
+        """
+        player_names = [player.name for player in players]
+        player_wins = [player.wins for player in players]
+
+        sns.barplot(x=player_names, y=player_wins)
+        plt.title('Final Ranking')
+        plt.xlabel('Players')
+        plt.ylabel('Wins')
+        plt.show()
+
 
 
 if __name__ == "__main__":
