@@ -106,6 +106,10 @@ class MarioKart:
         Allows a player to choose a vechile that they will play the game with. 
         Parameters: 
         player(Player): The player choosing a character
+        Side effects:
+        -prints the available vechiles
+        -updates the player.vechile and player.character based on whatever the player chooses. 
+        -uses print statements to inform the player of various information
         """
         print("Available vehicles are: ", ", ".join(self.available_vehicles))
         while True:
