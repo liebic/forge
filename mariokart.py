@@ -179,6 +179,14 @@ class MarioKart:
 
         
     def choosing_vehicle(self, player):
+        '''
+         makes it so a player can choose a vechile for the round
+        Parameters:
+            player (str): The player choosing a character.
+        
+        Side Effects:
+            Prints a message indicating the vechile chosen
+        '''
         print("Available vehicles are: ", ", ".join(self.available_vehicles))
         while True:
             chosen_vehicle = input(f"{player.name}, choose a vehicle: ").capitalize()
@@ -193,7 +201,13 @@ class MarioKart:
 
     def run_round(self):
         """
-        Run a round of the Mario Kart game.
+        Simulates a round in mariokart
+        
+        Side effects: 
+        -Player positions are updated based on burnout probabilities and other decisions.
+        - players list is sorted based on their updated positions.
+        - The player with the highest position at the end of the round is considered the winner
+        -Prints information about each player's position and burnout probability 
         """
         print("\nCurrent Player Positions:")
         for player in self.players:
