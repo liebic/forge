@@ -32,6 +32,10 @@ class Player:
             position_change = 2
         elif item_effect == "Bullet-Bill":
             position_change = 3
+        elif item_effect in ["Banana", "Triple-Banana"]:
+            position_change = 1
+        elif item_effect == "Coin":
+            position_change == 1
 
         self.position = max(1, finishing_order + 1 + position_change)
 
