@@ -16,7 +16,7 @@ How go use the program:
 | adjust_position | Zachary Chenoweth | None |
 | __str__  | Yann Mbianga  | magic method  |
 | player_position  | Yann Mbianga  | optional parameters  |
-| Content Cell | Rebekah Warner  | content cell  |
+| run_round | Rebekah Warner  | f-strings containing expressions  |
 | choosing_vehicle  | Rebekah Warner  | List Comprehension  |
 | plot_final_ranking  | Michelle Medina  | visualizing data with pyplot or seaborn  |
 | display_overall_winner  | Michelle Medina  | key function with lambda using sort()  |
