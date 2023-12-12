@@ -15,11 +15,11 @@ How go use the program:
 | mystery_box | Zachary Chenoweth  | `with` statement  |
 | adjust_position | Zachary Chenoweth | None |
 | __str__  | Yann Mbianga  | magic method  |
-| adjust_position  | Yann Mbianga  | Content Cell  |
+| player_position  | Yann Mbianga  | optional parameters  |
 | Content Cell | Rebekah Warner  | content cell  |
 | choosing_vehicle  | Rebekah Warner  | List Comprehension  |
 | plot_final_ranking  | Michelle Medina  | visualizing data with pyplot or seaborn  |
-| Content Cell  | Michelle Medina  | Content Cell  |
+| display_overall_winner  | Michelle Medina  | key function with lambda using sort()  |
 
 Members Names and GitHub ID's
 Yann Mbianga - yann2142
