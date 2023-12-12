@@ -5,7 +5,7 @@ A demonstration of a version of mario kart in python.
 
 Instructions on how to run the program:
 
-How go use the program:
+How to use the program:
 
 | Method/Function  | Primary Author | Techniques demonstrated |
 | ------------- | ------------- | ------------- |
