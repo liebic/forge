@@ -1,7 +1,5 @@
 import random
 import re
-import seaborn as sns
-import matplotlib.pyplot as plt
 
 class Player:
     def __init__(self, name, position):
@@ -32,10 +30,6 @@ class Player:
             position_change = 2
         elif item_effect == "Bullet-Bill":
             position_change = 3
-        elif item_effect in ["Banana", "Triple-Banana"]:
-            position_change = 1
-        elif item_effect == "Coin":
-            position_change == 1
 
         self.position = max(1, finishing_order + 1 + position_change)
 
@@ -73,39 +67,7 @@ class Player:
         burn_out_probability = base_probability * speed_factor
         burn_out_probability = max(0.0, min(1.0, burn_out_probability))
         return burn_out_probability
-
-    def __str__(self):
-        return f"{self.name} ({self.character}): Position {self.position} - Wins {self.wins}"
-
-    def mystery_box(self, player_rank):
-        """
-        Simulate the player receiving an item from the mystery box.
-
-        Parameters:
-        - player_rank (int): The rank of the player.
-
-        Returns:
-        - str: The item received from the mystery box.
-        
-        Side Effects:
-        - prints player items along with player rank
-        """
-        with open("items.txt", 'r') as file:
-            for item in file:
-                if re.match(r'[A-Za-z]+(-?)[A-Za-z]+', item):
-                    each_item = item.split(" ")
-            if player_rank == 1:
-                item_effect = random.choice(each_item[0:4])
-            elif player_rank == 2:
-                item_effect = random.choice(each_item[0:7])
-            elif player_rank == 3:
-                item_effect = random.choice(each_item[0:11])
-            elif player_rank == 4:
-                item_effect = random.choice(each_item[0:14])
-
-            return print(f'Player in {player_rank} place received: {item_effect}')
-
-
+    
 class MarioKart:
     def __init__(self):
         """
@@ -120,13 +82,7 @@ class MarioKart:
         Set the players for the game.
 
         Parameters:
-            players_names (list): A list of player names.
-        
-        Side Effects:
-            Prints the available character(s)
-            Takes user input to choose a character, updates player information
-            Prints message regarding successful character selection or prompts
-                player to choose another if selected character is already chosen
+        - players_names (list): A list of player names.
         """
         if not isinstance(players_names, list):
             raise TypeError("The players_names parameter must be a list! Try again.")
@@ -140,32 +96,17 @@ class MarioKart:
         Allow a player to choose a character for the game.
 
         Parameters:
-            player (str): The player choosing a character.
-            
-        Raises:
-            TypeError: If the players_names parameter is not a list
-            ValueError: If there are more than 4 players
-        
-        Side Effects:
-            Prints a message indicating successful player setup
+        - player (Player): The player choosing a character.
         """
         print("\nAvailable characters are: ")
         for char in self.available_characters:
             print(char)
-            
-        while True:
-            character = input(f"{player.name}, choose a character: ").capitalize()
-
-            if character.lower() in [char.lower() for char in self.available_characters]:
-                self.available_characters.remove([char for char in self.available_characters if char.lower() == character.lower()][0])
-                print(f"{player.name} has chosen {character}!")
-                player.character = character
-                break
-            else:
-                print(f"Sorry, {character} is not available or has already been chosen. Please choose another.")
-
-        
     def choosing_vehicle(self, player):
+        """
+        Allows a player to choose a vechile that they will play the game with. 
+        Parameters: 
+        player(Player): The player choosing a character
+        """
         print("Available vehicles are: ", ", ".join(self.available_vehicles))
         while True:
             chosen_vehicle = input(f"{player.name}, choose a vehicle: ").capitalize()
@@ -178,9 +119,25 @@ class MarioKart:
             else:
                 print(f"Sorry, {chosen_vehicle} has already been chosen for this round. Please choose another.")
 
+        while True:
+            character = input(f"{player.name}, choose a character: ").capitalize()
+
+            if character.lower() in [char.lower() for char in self.available_characters]:
+                self.available_characters.remove([char for char in self.available_characters if char.lower() == character.lower()][0])
+                print(f"{player.name} has chosen {character}!")
+                player.character = character
+                break
+            else:
+                print(f"Sorry, {character} is not available or has already been chosen. Please choose another.")
+
     def run_round(self):
         """
-        Run a round of the Mario Kart game.
+        Allows a round of Mario Kart to be played. 
+        Side effects:
+        - Burnout probability is used to update player positions
+        - player list is sorted based on updated positions 
+        -The player with the highest position at the end of the round is considered the winner for that particular round. 
+        -information about each plater's position and burnout probability is printed
         """
         print("\nCurrent Player Positions:")
         for player in self.players:
@@ -217,28 +174,8 @@ class MarioKart:
 
             self.players.sort(key=lambda player: player.wins, reverse=True)
 
-        self.plot_final_ranking(self.players)
-
         print("\nOverall Winner:")
         print(f"{self.players[0].name} ({self.players[0].character})!")
-
-        
-    def plot_final_ranking(self, players):
-        """
-        Plot the final ranking bar graph for all players.
-
-        Parameters:
-        players (list): List of Player objects.
-        """
-        player_names = [player.name for player in players]
-        player_wins = [player.wins for player in players]
-
-        sns.barplot(x=player_names, y=player_wins)
-        plt.title('Final Ranking')
-        plt.xlabel('Players')
-        plt.ylabel('Wins')
-        plt.show()
-
 
 
 if __name__ == "__main__":
