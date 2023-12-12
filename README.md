@@ -15,7 +15,7 @@ How go use the program:
 | mystery_box | Zachary Chenoweth  | `with` statement  |
 | adjust_position | Zachary Chenoweth | None |
 | __str__  | Yann Mbianga  | magic method  |
-| Content Cell  | Yann Mbianga  | Content Cell  |
+| adjust_position  | Yann Mbianga  | Content Cell  |
 | Content Cell | Rebekah Warner  | content cell  |
 | choosing_vehicle  | Rebekah Warner  | List Comprehension  |
 | plot_final_ranking  | Michelle Medina  | visualizing data with pyplot or seaborn  |
