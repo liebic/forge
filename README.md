@@ -11,7 +11,7 @@ How go use the program:
 | ------------- | ------------- | ------------- |
 | set_players  | Liene Bicevskis  | Conditional Expression  |
 | set_players | Liene Bicevskis  | sequence unpacking |
-| choosing_character | Liene Bicevskis | None|
+| choosing_character | Liene Bicevskis | None |
 | mystery_box  | Zachary Chenoweth  | regular expression  |
 | mystery_box | Zachary Chenoweth  | `with` statement  |
 | adjust_position | Zachary Chenoweth | None |
